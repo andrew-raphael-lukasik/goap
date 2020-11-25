@@ -4,13 +4,13 @@ using UnityEngine;
 public class DropOffFirewoodAction : GoapAction
 {
 	bool _droppedOffFirewood = false;
-	SupplyPileComponent _targetSupplyPile; // where we drop off the firewood
+	SupplyPileComponent _targetSupplyPile;// where we drop off the firewood
 	
 	public DropOffFirewoodAction ()
 	{
-		AddPrecondition( "hasFirewood" , true ); // can't drop off firewood if we don't already have some
-		AddEffect( "hasFirewood" , false ); // we now have no firewood
-		AddEffect( "collectFirewood" , true ); // we collected firewood
+		AddPrecondition( "hasFirewood" , true );// can't drop off firewood if we don't already have some
+		AddEffect( "hasFirewood" , false );// we now have no firewood
+		AddEffect( "collectFirewood" , true );// we collected firewood
 	}
 	
 	public override void Reset ()
@@ -21,7 +21,7 @@ public class DropOffFirewoodAction : GoapAction
 	
 	public override bool IsDone () => _droppedOffFirewood;
 	
-	public override bool RequiresInRange () => true; // yes we need to be near a supply pile so we can drop off the firewood
+	public override bool RequiresInRange () => true;// yes we need to be near a supply pile so we can drop off the firewood
 	
 	public override bool CheckProceduralPrecondition (GameObject agent)
 	{

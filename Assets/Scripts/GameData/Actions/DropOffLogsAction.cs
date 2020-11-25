@@ -4,13 +4,13 @@ using UnityEngine;
 public class DropOffLogsAction: GoapAction
 {
 	bool _droppedOffLogs = false;
-	SupplyPileComponent _targetSupplyPile; // where we drop off the logs
+	SupplyPileComponent _targetSupplyPile;// where we drop off the logs
 	
 	public DropOffLogsAction ()
 	{
-		AddPrecondition( "hasLogs" , true ); // can't drop off logs if we don't already have some
-		AddEffect( "hasLogs" , false ); // we now have no logs
-		AddEffect( "collectLogs" , true ); // we collected logs
+		AddPrecondition( "hasLogs" , true );// can't drop off logs if we don't already have some
+		AddEffect( "hasLogs" , false );// we now have no logs
+		AddEffect( "collectLogs" , true );// we collected logs
 	}
 	
 	public override void Reset ()
@@ -21,7 +21,7 @@ public class DropOffLogsAction: GoapAction
 	
 	public override bool IsDone () => _droppedOffLogs;
 	
-	public override bool RequiresInRange () => true; // yes we need to be near a supply pile so we can drop off the logs
+	public override bool RequiresInRange () => true;// yes we need to be near a supply pile so we can drop off the logs
 	
 	public override bool CheckProceduralPrecondition ( GameObject agent )
 	{

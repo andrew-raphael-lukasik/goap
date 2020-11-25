@@ -6,12 +6,12 @@ public sealed class GoapAgent : MonoBehaviour
 
 	FSM _stateMachine;
 
-	FSM.FSMState _idleState; // finds something to do
-	FSM.FSMState _moveToState; // moves to a target
-	FSM.FSMState _performActionState; // performs an action
+	FSM.FSMState _idleState;// finds something to do
+	FSM.FSMState _moveToState;// moves to a target
+	FSM.FSMState _performActionState;// performs an action
 	HashSet<GoapAction> _availableActions;
 	Queue<GoapAction> _currentActions;
-	IGoap _dataProvider; // this is the implementing class that provides our world data and listens to feedback on planning
+	IGoap _dataProvider;// this is the implementing class that provides our world data and listens to feedback on planning
 	GoapPlanner _planner;
 
 	void Start ()
@@ -62,14 +62,14 @@ public sealed class GoapAgent : MonoBehaviour
 				_currentActions = plan;
 				_dataProvider.PlanFound( goal , plan );
 
-				fsm.PopState(); // move to PerformAction state
+				fsm.PopState();// move to PerformAction state
 				fsm.PushState( _performActionState );
 
 			} else {
 				// ugh, we couldn't get a plan
 				Debug.Log( $"<color=orange>Failed Plan:</color>{PrettyPrint(goal)}" );
 				_dataProvider.PlanFailed( goal );
-				fsm.PopState(); // move back to IdleAction state
+				fsm.PopState();// move back to IdleAction state
 				fsm.PushState( _idleState );
 			}
 
@@ -85,8 +85,8 @@ public sealed class GoapAgent : MonoBehaviour
 			GoapAction action = _currentActions.Peek();
 			if( action.RequiresInRange() && action.target==null) {
 				Debug.Log( "<color=red>Fatal error:</color> Action requires a target but has none. Planning failed. You did not assign the target in your Action.checkProceduralPrecondition()" );
-				fsm.PopState(); // move
-				fsm.PopState(); // perform
+				fsm.PopState();// move
+				fsm.PopState();// perform
 				fsm.PushState(_idleState);
 				return;
 			}
@@ -98,8 +98,8 @@ public sealed class GoapAgent : MonoBehaviour
 			/*MovableComponent movable = gameObj.GetComponent<MovableComponent>();
 			if( movable==null) {
 				Debug.Log( "<color=red>Fatal error:</color> Trying to move an Agent that doesn't have a MovableComponent. Please give it one." );
-				fsm.popState(); // move
-				fsm.popState(); // perform
+				fsm.popState();// move
+				fsm.popState();// perform
 				fsm.pushState(idleState);
 				return;
 			}

@@ -4,7 +4,7 @@ using UnityEngine;
 public class MineOreAction : GoapAction
 {
 	bool _mined = false;
-	IronRockComponent _targetRock; // where we get the ore from
+	IronRockComponent _targetRock;// where we get the ore from
 
 	float _startTime = 0;
 	[SerializeField][UnityEngine.Serialization.FormerlySerializedAs( "miningDuration" )] float _miningDuration = 2;// seconds

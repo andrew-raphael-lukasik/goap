@@ -24,7 +24,7 @@ public class ChopTreeAction : GoapAction
 	
 	public override bool IsDone () => _chopped;
 	
-	public override bool RequiresInRange () => true; // yes we need to be near a tree
+	public override bool RequiresInRange () => true;// yes we need to be near a tree
 	
 	public override bool CheckProceduralPrecondition ( GameObject agent )
 	{

@@ -3,7 +3,7 @@ using UnityEngine;
 public class PickUpToolAction : GoapAction
 {
 	bool _hasTool = false;
-	SupplyPileComponent _targetSupplyPile; // where we get the tool from
+	SupplyPileComponent _targetSupplyPile;// where we get the tool from
 
 	public PickUpToolAction ()
 	{
@@ -19,7 +19,7 @@ public class PickUpToolAction : GoapAction
 	
 	public override bool IsDone () => _hasTool;
 
-	public override bool RequiresInRange () => true; // yes we need to be near a supply pile so we can pick up the tool
+	public override bool RequiresInRange () => true;// yes we need to be near a supply pile so we can pick up the tool
 
 	public override bool CheckProceduralPrecondition ( GameObject agent )
 	{
@@ -73,7 +73,7 @@ public class PickUpToolAction : GoapAction
 			GameObject prefab = Resources.Load<GameObject>( backpack.toolType );
 			GameObject tool = Instantiate( prefab , transform.position , transform.rotation );
 			backpack.tool = tool;
-			tool.transform.parent = transform; // attach the tool
+			tool.transform.parent = transform;// attach the tool
 
 			return true;
 		}

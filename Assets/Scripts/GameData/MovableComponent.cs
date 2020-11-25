@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MovableComponent : MonoBehaviour
 {
-	public float moveSpeed = 20; // units per second
+	public float moveSpeed = 20;// units per second
 
 	// Use this for initialization
 	void Start ()

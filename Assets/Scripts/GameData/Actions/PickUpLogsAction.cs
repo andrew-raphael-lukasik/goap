@@ -4,12 +4,12 @@ using UnityEngine;
 public class PickUpLogsAction : GoapAction
 {
 	bool _hasLogs = false;
-	SupplyPileComponent _targetSupplyPile; // where we get the logs from
+	SupplyPileComponent _targetSupplyPile;// where we get the logs from
 	
 	public PickUpLogsAction ()
 	{
-		AddPrecondition( "hasLogs" , false ); // don't get a logs if we already have one
-		AddEffect( "hasLogs" , true ); // we now have a logs
+		AddPrecondition( "hasLogs" , false );// don't get a logs if we already have one
+		AddEffect( "hasLogs" , true );// we now have a logs
 	}
 	
 	public override void Reset ()
@@ -20,7 +20,7 @@ public class PickUpLogsAction : GoapAction
 	
 	public override bool IsDone () => _hasLogs;
 	
-	public override bool RequiresInRange () => true; // yes we need to be near a supply pile so we can pick up the logs
+	public override bool RequiresInRange () => true;// yes we need to be near a supply pile so we can pick up the logs
 	
 	public override bool CheckProceduralPrecondition ( GameObject agent )
 	{

@@ -24,7 +24,7 @@ public abstract class Labourer : MonoBehaviour, IGoap
 			GameObject prefab = Resources.Load<GameObject>( _backpack.toolType );
 			GameObject tool = Instantiate (prefab, transform.position, transform.rotation) as GameObject;
 			_backpack.tool = tool;
-			tool.transform.parent = transform; // attach the tool
+			tool.transform.parent = transform;// attach the tool
 		}
 	}
 

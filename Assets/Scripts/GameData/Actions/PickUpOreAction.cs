@@ -4,12 +4,12 @@ using UnityEngine;
 public class PickUpOreAction : GoapAction
 {
 	bool _hasOre = false;
-	SupplyPileComponent _targetSupplyPile; // where we get the ore from
+	SupplyPileComponent _targetSupplyPile;// where we get the ore from
 	
 	public PickUpOreAction ()
 	{
-		AddPrecondition( "hasOre" , false ); // don't get a ore if we already have one
-		AddEffect( "hasOre" , true ); // we now have a ore
+		AddPrecondition( "hasOre" , false );// don't get a ore if we already have one
+		AddEffect( "hasOre" , true );// we now have a ore
 	}
 	
 	public override void Reset ()
@@ -20,7 +20,7 @@ public class PickUpOreAction : GoapAction
 	
 	public override bool IsDone () => _hasOre;
 	
-	public override bool RequiresInRange () => true; // yes we need to be near a supply pile so we can pick up the ore
+	public override bool RequiresInRange () => true;// yes we need to be near a supply pile so we can pick up the ore
 	
 	public override bool CheckProceduralPrecondition ( GameObject agent )
 	{

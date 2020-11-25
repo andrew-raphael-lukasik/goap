@@ -5,13 +5,13 @@ public class DropOffToolsAction : GoapAction
 {
 
 	bool _droppedOffTools = false;
-	SupplyPileComponent _targetSupplyPile; // where we drop off the  tools
+	SupplyPileComponent _targetSupplyPile;// where we drop off the  tools
 	
 	public DropOffToolsAction ()
 	{
-		AddPrecondition( "hasNewTools" , true ); // can't drop off tools if we don't already have some
-		AddEffect( "hasNewTools" , false ); // we now have no tools
-		AddEffect( "collectTools" , true ); // we collected tools
+		AddPrecondition( "hasNewTools" , true );// can't drop off tools if we don't already have some
+		AddEffect( "hasNewTools" , false );// we now have no tools
+		AddEffect( "collectTools" , true );// we collected tools
 	}
 	
 	public override void Reset ()
@@ -22,7 +22,7 @@ public class DropOffToolsAction : GoapAction
 	
 	public override bool IsDone () => _droppedOffTools;
 	
-	public override bool RequiresInRange () => true; // yes we need to be near a supply pile so we can drop off the tools
+	public override bool RequiresInRange () => true;// yes we need to be near a supply pile so we can drop off the tools
 	
 	public override bool CheckProceduralPrecondition ( GameObject agent )
 	{

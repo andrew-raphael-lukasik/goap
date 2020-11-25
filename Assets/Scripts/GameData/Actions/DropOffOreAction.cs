@@ -4,13 +4,13 @@ using UnityEngine;
 public class DropOffOreAction : GoapAction
 {
 	bool _droppedOffOre = false;
-	SupplyPileComponent _targetSupplyPile; // where we drop off the ore
+	SupplyPileComponent _targetSupplyPile;// where we drop off the ore
 	
 	public DropOffOreAction ()
 	{
-		AddPrecondition( "hasOre" , true ); // can't drop off ore if we don't already have some
-		AddEffect( "hasOre" , false ); // we now have no ore
-		AddEffect( "collectOre" , true ); // we collected ore
+		AddPrecondition( "hasOre" , true );// can't drop off ore if we don't already have some
+		AddEffect( "hasOre" , false );// we now have no ore
+		AddEffect( "collectOre" , true );// we collected ore
 	}
 	
 	public override void Reset ()
@@ -21,7 +21,7 @@ public class DropOffOreAction : GoapAction
 	
 	public override bool IsDone () => _droppedOffOre;
 	
-	public override bool RequiresInRange () => true; // yes we need to be near a supply pile so we can drop off the ore
+	public override bool RequiresInRange () => true;// yes we need to be near a supply pile so we can drop off the ore
 	
 	public override bool CheckProceduralPrecondition (GameObject agent)
 	{

@@ -4,10 +4,10 @@ using UnityEngine;
 public class ForgeToolAction : GoapAction
 {
 	bool _forged = false;
-	ForgeComponent _targetForge; // where we forge tools
+	ForgeComponent _targetForge;// where we forge tools
 	
 	float _startTime = 0;
-	public float forgeDuration = 2; // seconds
+	public float forgeDuration = 2;// seconds
 	
 	public ForgeToolAction ()
 	{
@@ -24,7 +24,7 @@ public class ForgeToolAction : GoapAction
 	
 	public override bool IsDone () => _forged;
 	
-	public override bool RequiresInRange () => true; // yes we need to be near a forge
+	public override bool RequiresInRange () => true;// yes we need to be near a forge
 	
 	public override bool CheckProceduralPrecondition ( GameObject agent )
 	{

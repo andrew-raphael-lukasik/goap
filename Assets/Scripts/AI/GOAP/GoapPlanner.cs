@@ -63,7 +63,7 @@ public class GoapPlanner
 		while( n!=null )
 		{
 			if( n.action!=null )
-				result.Insert( 0 , n.action ); // insert the action in the front
+				result.Insert( 0 , n.action );// insert the action in the front
 			n = n.parent;
 		}
 		// we now have this action list in correct order
