@@ -38,9 +38,9 @@ public abstract class Labourer : MonoBehaviour, IGoap
 	/**
 	 * Key-Value data that will feed the GOAP actions and system while planning.
 	 */
-	Dictionary<string,object> IGoap.GetWorldState ()
+	Dictionary<string,bool> IGoap.GetWorldState ()
 	{
-		return new Dictionary<string,object>{
+		return new Dictionary<string,bool>{
 			{ "hasOre" , _backpack.numOre>0 } ,
 			{ "hasLogs" , _backpack.numLogs>0 } ,
 			{ "hasFirewood" , _backpack.numFirewood>0 } ,
@@ -48,17 +48,17 @@ public abstract class Labourer : MonoBehaviour, IGoap
 		};
 	}
 
-	Dictionary<string,object> IGoap.CreateGoalState () => OnCreateGoalState();
-	protected abstract Dictionary<string,object> OnCreateGoalState ();
+	Dictionary<string,bool> IGoap.CreateGoalState () => OnCreateGoalState();
+	protected abstract Dictionary<string,bool> OnCreateGoalState ();
 
-	void IGoap.PlanFailed ( Dictionary<string,object> failedGoal )
+	void IGoap.PlanFailed ( Dictionary<string,bool> failedGoal )
 	{
 		// Not handling this here since we are making sure our goals will always succeed.
 		// But normally you want to make sure the world state has changed before running
 		// the same goal again, or else it will just fail.
 	}
 
-	void IGoap.PlanFound ( Dictionary<string,object> goal , Queue<GoapAction> actions )
+	void IGoap.PlanFound ( Dictionary<string,bool> goal , Queue<GoapAction> actions )
 	{
 		// Yay we found a plan for our goal
 		_planPreview = GoapAgent.PrettyPrint( actions );

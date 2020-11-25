@@ -183,7 +183,7 @@ public sealed class GoapAgent : MonoBehaviour
 		Debug.Log( $"Found actions: {PrettyPrint(actions)}" );
 	}
 
-	public static string PrettyPrint ( Dictionary<string,object> state )
+	public static string PrettyPrint ( Dictionary<string,bool> state )
 	{
 		var sb = new System.Text.StringBuilder();
 		foreach( var kv in state )

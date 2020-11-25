@@ -5,11 +5,11 @@ using System.Collections.Generic;
 public abstract class GoapAction : MonoBehaviour
 {
 
-	Dictionary<string,object> _preconditions;
-	public Dictionary<string,object> Preconditions => _preconditions;
+	Dictionary<string,bool> _preconditions;
+	public Dictionary<string,bool> Preconditions => _preconditions;
 
-	Dictionary<string,object> _effects;
-	public Dictionary<string,object> Effects => _effects;
+	Dictionary<string,bool> _effects;
+	public Dictionary<string,bool> Effects => _effects;
 
 	bool _inRange = false;
 
@@ -25,8 +25,8 @@ public abstract class GoapAction : MonoBehaviour
 
 	public GoapAction ()
 	{
-		_preconditions = new Dictionary<string,object>();
-		_effects = new Dictionary<string,object>();
+		_preconditions = new Dictionary<string,bool>();
+		_effects = new Dictionary<string,bool>();
 	}
 
 	public void DoReset ()
@@ -74,7 +74,7 @@ public abstract class GoapAction : MonoBehaviour
 	
 	public void SetInRange ( bool inRange ) => this._inRange = inRange;
 
-	public void AddPrecondition ( string key , object value ) => _preconditions.Add( key,value );
+	public void AddPrecondition ( string key , bool value ) => _preconditions.Add( key,value );
 
 	public void RemovePrecondition ( string key )
 	{
@@ -82,7 +82,7 @@ public abstract class GoapAction : MonoBehaviour
 			_preconditions.Remove( key );
 	}
 
-	public void AddEffect ( string key , object value ) => _effects.Add( key , value );
+	public void AddEffect ( string key , bool value ) => _effects.Add( key , value );
 
 	public void RemoveEffect ( string key )
 	{

@@ -15,8 +15,8 @@ public class GoapPlanner
 	public Queue<GoapAction> Plan (
 		GameObject agent ,
 		HashSet<GoapAction> availableActions ,
-		Dictionary<string,object> worldState ,
-		Dictionary<string,object> goal) 
+		Dictionary<string,bool> worldState ,
+		Dictionary<string,bool> goal) 
 	{
 		// reset the actions so we can start fresh with them
 		foreach( GoapAction action in availableActions )
@@ -86,7 +86,7 @@ public class GoapPlanner
 		Node parent ,
 		List<Node> leaves ,
 		HashSet<GoapAction> usableActions ,
-		Dictionary<string,object> goal
+		Dictionary<string,bool> goal
 	)
 	{
 		bool foundOne = false;
@@ -98,7 +98,7 @@ public class GoapPlanner
 			if( InState(action.Preconditions,parent.state) )
 			{
 				// apply the action's effects to the parent state
-				Dictionary<string,object> currentState = PopulateState( parent.state , action.Effects );
+				Dictionary<string,bool> currentState = PopulateState( parent.state , action.Effects );
 				//Debug.Log(GoapAgent.prettyPrint(currentState));
 				Node node = new Node( parent , parent.runningCost+action.cost , currentState , action );
 
@@ -137,7 +137,7 @@ public class GoapPlanner
 	 * Check that all items in 'test' are in 'state'. If just one does not match or is not there
 	 * then this returns false.
 	 */
-	bool InState ( Dictionary<string,object> test , Dictionary<string,object> state )
+	bool InState ( Dictionary<string,bool> test , Dictionary<string,bool> state )
 	{
 		bool allMatch = true;
 		foreach( var t in test )
@@ -160,9 +160,9 @@ public class GoapPlanner
 	/**
 	 * Apply the stateChange to the currentState
 	 */
-	Dictionary<string,object> PopulateState ( Dictionary<string,object> currentState , Dictionary<string,object> stateChange )
+	Dictionary<string,bool> PopulateState ( Dictionary<string,bool> currentState , Dictionary<string,bool> stateChange )
 	{
-		Dictionary<string,object> state = new Dictionary<string,object>();
+		Dictionary<string,bool> state = new Dictionary<string,bool>();
 		// copy the KVPs over as new objects
 		foreach( var kv in currentState )
 			state.Add( kv.Key , kv.Value );
@@ -185,12 +185,12 @@ public class GoapPlanner
 	{
 		public Node parent;
 		public float runningCost;
-		public Dictionary<string,object> state;
+		public Dictionary<string,bool> state;
 		public GoapAction action;
 		public Node (
 			Node parent ,
 			float runningCost ,
-			Dictionary<string,object> state ,
+			Dictionary<string,bool> state ,
 			GoapAction action
 		)
 		{
